@@ -55,6 +55,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload hero assets — inicia download antes do CSS ler background -->
+    <link rel="preload" as="image" href="/field-pop-art.webp" fetchpriority="high" type="image/webp" />
+    <link rel="preload" as="image" href="/football-single.webp" type="image/webp" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
@@ -177,7 +181,7 @@
 
       .info-block {
         position: absolute;
-        bottom: max(38rem, calc(36rem + env(safe-area-inset-bottom)));
+        bottom: max(39rem, calc(37rem + env(safe-area-inset-bottom)));
         left: 50%;
         z-index: 3;
         display: grid;
@@ -716,7 +720,7 @@
 
         .info-block {
           position: fixed;
-          bottom: max(13rem, calc(12rem + env(safe-area-inset-bottom)));
+          bottom: max(14rem, calc(13rem + env(safe-area-inset-bottom)));
           gap: clamp(2.5rem, 5vh, 3.5rem);
         }
 
