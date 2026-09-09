@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Entre no canal do Jota e receba palpites todos os dias."
+    />
+    <meta name="theme-color" content="#071b0d" />
+    <title>MÁQUINA DO JOTA</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23f9d923' stroke='%23051108' stroke-width='4'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Arial' font-size='25' font-weight='900' fill='%23051108'%3EJC%3C/text%3E%3C/svg%3E"
+    />
+
+    <link rel="preconnect" href="https://track.grupojc.cc" crossorigin />
+    <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
+
+    <script src="https://track.grupojc.cc/track/ad7c6882-f738-41b7-9a04-3865747d0017.js" async></script>
+
+    <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '2846925145706526');
+      fbq('track', 'PageView');
+
+      function dispararLead() {
+        var eventId = 'EnterChannel' + Date.now();
+        var params = new URLSearchParams(window.location.search);
+        var utms = {};
+        ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','campaign','fbclid','gclid','cid','account_id','bot'].forEach(function (k) {
+          var v = params.get(k);
+          if (v) utms[k] = v;
+        });
+        try { fbq('track', 'EnterChannel', utms, { eventID: eventId }); } catch (e) {}
+        window._lastLeadEventId = eventId;
+        return eventId;
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --ink: #061108;
+        --green: #20d968;
+        --green-dark: #0a8e43;
+        --lime: #caff35;
+        --yellow: #f7d522;
+        --white: #f7fff8;
+        --muted: rgb(247 255 248 / 74%);
+        --line: rgb(255 255 255 / 15%);
+
+        /* Design tokens — paleta "Pitch" */
+        --pitch: #051a0d;
+        --pitch-mid: #0a2617;
+        --emerald: #1ec96d;
+        --sunbeam: #ffd429;
+        --wa-green: #25d366;
+        --text-primary: #f5fff5;
+        --text-secondary: rgb(245 255 245 / 60%);
+
+        /* Glass surface tokens */
+        --fog: rgb(255 255 255 / 15%);
+        --fog-soft: rgb(255 255 255 / 7%);
+        --haze: rgb(255 255 255 / 21%);
+        --haze-inner: rgb(255 255 255 / 18%);
+
+        /* Raio + sombras */
+        --r-sm: 0.5rem;
+        --r-md: 1rem;
+        --r-lg: 1.5rem;
+        --r-pill: 999px;
+        --shadow-sm: 0 4px 12px rgb(0 0 0 / 20%);
+        --shadow-md: 0 18px 45px rgb(0 0 0 / 24%);
+        --glow-emerald: 0 0 60px rgb(30 201 109 / 35%);
+
+        /* Fontes */
+        --font-display: 'Anton', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        --font-body: 'Plus Jakarta Sans', Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        min-width: 320px;
+        overflow-x: hidden;
+        background: var(--pitch);
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100svh;
+        margin: 0;
+        overflow-x: hidden;
+        color: var(--white);
+        font-family: var(--font-body);
+        background:
+          linear-gradient(180deg, rgb(1 14 5 / 52%), rgb(1 10 4 / 84%)),
+          url("field-pop-art.webp")
+            center / cover fixed;
+      }
+
+      body::before {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        content: "";
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 50% 36%, rgb(67 255 128 / 17%), transparent 38%),
+          linear-gradient(90deg, rgb(0 0 0 / 35%), transparent 25% 75%, rgb(0 0 0 / 35%));
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        position: relative;
+        display: flex;
+        width: 100%;
+        min-height: 100svh;
+        flex-direction: column;
+        isolation: isolate;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 100svh;
+        overflow-x: hidden;
+        padding:
+          max(1rem, env(safe-area-inset-top))
+          max(1rem, env(safe-area-inset-right))
+          max(1rem, env(safe-area-inset-bottom))
+          max(1rem, env(safe-area-inset-left));
+        text-align: center;
+      }
+
+      .hero-inner {
+        position: static;
+      }
+
+      .title-stage {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        z-index: 3;
+        display: grid;
+        width: min(92vw, 760px);
+        justify-items: center;
+        gap: clamp(2.5rem, 6vh, 3.5rem);
+        transform: translate(-50%, -50%);
+      }
+
+      .info-block {
+        position: absolute;
+        bottom: max(38rem, calc(36rem + env(safe-area-inset-bottom)));
+        left: 50%;
+        z-index: 3;
+        display: grid;
+        width: min(92vw, 760px);
+        justify-items: center;
+        gap: clamp(2.5rem, 5.5vh, 3.75rem);
+        transform: translateX(-50%);
+      }
+
+      /* Entrance stagger — subtitle → CTA em cascata */
+      .js .info-block > .subtitle,
+      .js .info-block > .cta-wrap {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      .js .info-block.info-visible > .subtitle {
+        animation: stagger-in 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0ms forwards;
+      }
+
+      .js .info-block.info-visible > .cta-wrap {
+        animation: stagger-in 0.65s cubic-bezier(0.16, 1, 0.3, 1) 240ms forwards;
+      }
+
+      @keyframes stagger-in {
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .eyebrow {
+        margin: 0;
+        color: var(--wa-green);
+        font-family: var(--font-body);
+        font-size: clamp(0.85rem, 2vw, 1.05rem);
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .js .eyebrow {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+
+      .js .eyebrow.eyebrow-visible {
+        animation:
+          eyebrow-in 0.55s cubic-bezier(0.18, 0.78, 0.25, 1.12) forwards,
+          eyebrow-breathe 3.6s ease-in-out 1s infinite;
+      }
+
+      .hero-title {
+        display: grid;
+        margin: 0;
+        color: var(--text-primary);
+        font-family: var(--font-display);
+        font-size: clamp(4.5rem, min(15.5vw, 18vh), 11rem);
+        font-weight: 400;
+        line-height: 0.88;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+        text-wrap: balance;
+        filter: drop-shadow(0 6px 0 rgb(0 0 0 / 42%));
+      }
+
+      .js .hero-title.title-visible {
+        animation: title-float 4.2s ease-in-out 1.6s infinite;
+      }
+
+      .title-line {
+        display: block;
+        white-space: nowrap;
+      }
+
+      .title-line:last-child {
+        margin-top: 0.28em;
+        color: var(--wa-green);   /* verde WhatsApp — mesma cor do eyebrow */
+      }
+
+      .js .title-letter {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(0.42em) scale(0.82) rotate(3deg);
+        filter: blur(7px);
+      }
+
+      .js .title-visible .title-letter {
+        animation: letter-in 0.4s cubic-bezier(0.18, 0.78, 0.25, 1.12) forwards;
+        animation-delay: calc(var(--letter-index) * 30ms);
+      }
+
+      /* Kickoff ball scene: rolls over the title, revealing it as it passes */
+      .kickoff-scene {
+        position: absolute;
+        top: 30%;
+        left: 0;
+        z-index: 5;
+        display: none;
+        width: 1px;
+        height: 1px;
+        pointer-events: none;
+      }
+
+      .js .kickoff-scene {
+        display: block;
+      }
+
+      .kickoff-shadow,
+      .kickoff-ball-wrap {
+        position: absolute;
+        top: 0;
+        left: -400px;
+        opacity: 0;
+      }
+
+      .kickoff-shadow {
+        width: clamp(126px, 20vw, 228px);
+        height: clamp(28px, 4.6vw, 48px);
+        margin-top: clamp(126px, 19vw, 216px);
+        border-radius: 50%;
+        background: radial-gradient(closest-side, rgb(0 0 0 / 60%), transparent 74%);
+        filter: blur(1px);
+      }
+
+      .kickoff-ball {
+        display: block;
+        width: clamp(210px, 33vw, 380px);
+        height: auto;
+        transform: translateY(-50%);
+        filter: drop-shadow(0 15px 13px rgb(0 0 0 / 55%));
+        will-change: transform;
+      }
+
+      .kickoff-ball-wrap {
+        will-change: transform, opacity;
+      }
+
+      .js .scene-start .kickoff-ball-wrap {
+        animation: ball-cross 10.6s ease-in-out infinite;
+      }
+
+      .js .scene-start .kickoff-ball {
+        animation: ball-spin 10.6s ease-in-out infinite;
+      }
+
+      .js .scene-start .kickoff-shadow {
+        animation: ball-shadow 10.6s ease-in-out infinite;
+      }
+
+      .glass-card {
+        position: relative;
+        width: min(100%, 620px);
+        padding: clamp(1.15rem, 3vw, 1.5rem) clamp(1.35rem, 3.6vw, 1.75rem);
+        border: 1px solid var(--haze);
+        border-radius: var(--r-lg);
+        background:
+          linear-gradient(145deg, rgb(30 201 109 / 8%), rgb(255 255 255 / 3%) 45%),
+          linear-gradient(180deg, var(--fog), var(--fog-soft));
+        box-shadow:
+          inset 0 1px 0 var(--haze-inner),
+          inset 0 0 40px rgb(30 201 109 / 6%),
+          var(--shadow-md);
+        backdrop-filter: blur(18px) saturate(1.2);
+        -webkit-backdrop-filter: blur(18px) saturate(1.2);
+      }
+
+      .glass-card::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: 12%;
+        right: 12%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--emerald), transparent);
+        opacity: 0.55;
+        pointer-events: none;
+      }
+
+      .subtitle {
+        margin: 0;
+        padding: 0.9rem 1.35rem;
+        border-radius: 0.7rem;
+        background: linear-gradient(180deg, rgb(5 26 13 / 42%), rgb(5 26 13 / 68%));
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        color: var(--text-primary);
+        font-family: var(--font-body);
+        font-size: clamp(1.05rem, 2.8vw, 1.32rem);
+        font-weight: 500;
+        line-height: 1.4;
+        letter-spacing: -0.005em;
+        text-wrap: balance;
+      }
+
+      .subtitle strong {
+        position: relative;
+        color: var(--wa-green);
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .subtitle strong::after {
+        content: '';
+        position: absolute;
+        bottom: -0.15em;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--wa-green);
+        border-radius: 2px;
+        transform-origin: left center;
+        animation: underline-slide 2.6s ease-in-out infinite;
+      }
+
+      @keyframes underline-slide {
+        0%, 100% {
+          transform: scaleX(0.35);
+          opacity: 0.55;
+        }
+        50% {
+          transform: scaleX(1);
+          opacity: 1;
+        }
+      }
+
+
+      /* ── Compliance badge (topo) — aviso legal SPA/MF, plain text ── */
+      .compliance-badge {
+        position: absolute;
+        top: max(1rem, env(safe-area-inset-top));
+        left: 50%;
+        z-index: 10;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        max-width: calc(100vw - 2rem);
+        color: var(--text-secondary);
+        font-family: var(--font-body);
+        font-size: clamp(0.6rem, 1.75vw, 0.72rem);
+        font-weight: 500;
+        line-height: 1.25;
+        transform: translateX(-50%);
+        animation: compliance-fade 0.6s ease-out 0.15s both;
+      }
+
+      .compliance-age {
+        color: var(--text-primary);
+        font-weight: 800;
+        letter-spacing: -0.01em;
+      }
+
+      .compliance-sep {
+        color: var(--haze);
+        font-weight: 400;
+      }
+
+      .compliance-text {
+        color: var(--text-primary);
+        font-weight: 500;
+        letter-spacing: -0.005em;
+      }
+
+      @keyframes compliance-fade {
+        from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+        to { opacity: 1; transform: translateX(-50%) translateY(0); }
+      }
+
+      /* Mobile — ajuste de fonte */
+      @media (max-width: 620px) {
+        .compliance-badge {
+          gap: 0.4rem;
+          font-size: 0.56rem;
+        }
+      }
+
+
+      .cta-wrap {
+        display: grid;
+        width: min(100%, 520px);
+        justify-items: center;
+        gap: 0.45rem;
+      }
+
+      .cta {
+        position: relative;
+        display: inline-flex;
+        width: 100%;
+        min-height: 4.85rem;
+        align-items: center;
+        justify-content: center;
+        gap: 1.05rem;
+        padding: 1.25rem 2rem;
+        border: 1px solid var(--haze);
+        border-radius: var(--r-pill);
+        background: linear-gradient(180deg, var(--emerald), #0a7a3d);
+        box-shadow:
+          0 5px 0 #063e21,
+          0 14px 34px rgb(0 0 0 / 42%),
+          inset 0 1px 0 var(--haze-inner);
+        color: var(--text-primary);
+        font-family: var(--font-body);
+        font-size: clamp(1.2rem, 3.5vw, 1.52rem);
+        font-weight: 900;
+        letter-spacing: 0.035em;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        isolation: isolate;
+        animation: float 2.8s ease-in-out infinite;
+        transition: filter 160ms ease, transform 160ms ease, box-shadow 220ms ease;
+      }
+
+      .cta::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -30%;
+        z-index: 0;
+        width: 25%;
+        height: 100%;
+        background: linear-gradient(120deg, transparent 0%, rgb(255 255 255 / 55%) 50%, transparent 100%);
+        transform: skewX(-20deg);
+        animation: cta-shine 3s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      .cta > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-arrow {
+        width: 1.6rem;
+        height: 1.6rem;
+        flex: 0 0 auto;
+        animation: arrow-nudge 1.2s ease-in-out infinite;
+      }
+
+      .cta:hover {
+        filter: brightness(1.12);
+        box-shadow:
+          0 5px 0 #063e21,
+          0 14px 34px rgb(0 0 0 / 42%),
+          var(--glow-emerald),
+          inset 0 1px 0 var(--haze-inner);
+      }
+
+      .cta:active {
+        transform: translateY(4px);
+        box-shadow:
+          0 1px 0 #063e21,
+          0 9px 20px rgb(0 0 0 / 30%);
+      }
+
+      .cta:focus-visible {
+        outline: 3px solid var(--sunbeam);
+        outline-offset: 4px;
+      }
+
+      @keyframes cta-shine {
+        0% { left: -30%; }
+        60%, 100% { left: 130%; }
+      }
+
+      @keyframes arrow-nudge {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(4px); }
+      }
+
+      .whatsapp-icon {
+        width: 2.1rem;
+        height: 2.1rem;
+        flex: 0 0 auto;
+        fill: currentColor;
+      }
+
+      .legal-note {
+        margin: 0;
+        color: var(--text-secondary);
+        font-family: var(--font-body);
+        font-size: clamp(0.5rem, 1.25vw, 0.6rem);
+        line-height: 1.3;
+      }
+
+      .legal-note a,
+      .footer a {
+        font-weight: 750;
+        text-underline-offset: 0.18em;
+      }
+
+      .footer {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 4;
+        display: grid;
+        justify-items: center;
+        gap: 0.35rem;
+        padding:
+          0.85rem max(1rem, env(safe-area-inset-right))
+          max(0.85rem, env(safe-area-inset-bottom))
+          max(1rem, env(safe-area-inset-left));
+        border-top: 1px solid var(--haze);
+        background: linear-gradient(180deg, rgb(5 26 13 / 48%), rgb(5 26 13 / 92%));
+        color: var(--text-secondary);
+        font-family: var(--font-body);
+        text-align: center;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .footer nav {
+        width: min(100%, 900px);
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin: 0;
+        font-size: clamp(0.62rem, 1.5vw, 0.74rem);
+        line-height: 1.35;
+      }
+
+      .legal-seal {
+        display: block;
+        width: min(100%, 720px);
+        height: auto;
+        margin: 0;
+      }
+
+      @keyframes ball-cross {
+        0% {
+          opacity: 0;
+          transform: translate3d(0, 0, 0);
+        }
+        2% {
+          opacity: 1;
+        }
+        22% {
+          opacity: 1;
+        }
+        25%, 100% {
+          opacity: 0;
+          transform: translate3d(calc(100vw + 400px), 0, 0);
+        }
+      }
+
+      @keyframes ball-spin {
+        0% {
+          transform: translateY(-50%) rotate(-12deg);
+        }
+        25%, 100% {
+          transform: translateY(-50%) rotate(720deg);
+        }
+      }
+
+      @keyframes ball-shadow {
+        0% {
+          opacity: 0;
+          transform: translate3d(0, 0, 0) scale(0.9);
+        }
+        2% {
+          opacity: 0.35;
+        }
+        22% {
+          opacity: 0.35;
+        }
+        25%, 100% {
+          opacity: 0;
+          transform: translate3d(calc(100vw + 400px), 0, 0) scale(0.9);
+        }
+      }
+
+      @keyframes letter-in {
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1) rotate(0);
+          filter: blur(0);
+        }
+      }
+
+      @keyframes eyebrow-in {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes eyebrow-breathe {
+        0%, 100% {
+          transform: translateY(0) scale(1);
+          text-shadow: 0 0 0 rgb(247 213 34 / 0);
+        }
+        50% {
+          transform: translateY(0) scale(1.03);
+          text-shadow: 0 0 14px rgb(247 213 34 / 0.4);
+        }
+      }
+
+      @keyframes title-float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      @keyframes info-in {
+        to {
+          opacity: 1;
+          transform: translate(-50%, 0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+
+      @media (max-width: 620px) {
+        .hero {
+          padding-inline: 0.85rem;
+        }
+
+        .title-stage,
+        .info-block {
+          width: min(94vw, 520px);
+        }
+
+        .title-stage {
+          gap: clamp(2rem, 5vh, 3rem);
+        }
+
+        .info-block {
+          position: fixed;
+          bottom: max(13rem, calc(12rem + env(safe-area-inset-bottom)));
+          gap: clamp(2.5rem, 5vh, 3.5rem);
+        }
+
+        .hero-title {
+          width: 100%;
+          max-width: 100%;
+          padding-inline: 0.25rem;
+          font-size: clamp(4.6rem, 22vw, 7.2rem);
+          line-height: 0.86;
+          letter-spacing: -0.025em;
+          text-align: center;
+        }
+
+        .title-line:last-child {
+          margin-top: 0.15em;
+        }
+
+        .glass-card {
+          border-radius: 0.95rem;
+        }
+
+        .cta {
+          min-height: 4.6rem;
+          border-radius: 999px;
+        }
+
+        .footer {
+          gap: 0.28rem;
+          padding-top: 0.7rem;
+        }
+
+        .legal-seal {
+          width: calc(100% + 0.4rem);
+          max-width: none;
+          margin-inline: -0.2rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .kickoff-scene {
+          display: none !important;
+        }
+
+        .title-letter {
+          opacity: 1 !important;
+          transform: none !important;
+          filter: none !important;
+          animation: none !important;
+        }
+
+        .eyebrow {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+
+        .info-block {
+          opacity: 1 !important;
+          transform: translateX(-50%) !important;
+        }
+
+        .cta {
+          animation: none;
+        }
+      }
+    </style>
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2846925145706526&ev=PageView&noscript=1" alt="" /></noscript>
+    <div class="page">
+      <main class="hero">
+        <div class="kickoff-scene" aria-hidden="true">
+          <span class="kickoff-shadow"></span>
+          <span class="kickoff-ball-wrap">
+            <img
+              class="kickoff-ball"
+              src="football-single.webp"
+              width="1254"
+              height="1254"
+              alt=""
+            />
+          </span>
+        </div>
+
+        <div class="compliance-badge" role="note" aria-label="Aviso legal">
+          <span class="compliance-age" aria-hidden="true">+18</span>
+          <span class="compliance-sep" aria-hidden="true">|</span>
+          <span class="compliance-text">Ministério da Fazenda adverte: aposta não é investimento</span>
+        </div>
+
+        <div class="hero-inner">
+          <div class="title-stage">
+            <p class="eyebrow">Palpites todos os dias</p>
+
+            <h1 id="main-title" class="hero-title" aria-label="Entrada Liberada">
+              <span class="title-line">ENTRADA</span>
+              <span class="title-line">LIBERADA</span>
+            </h1>
+          </div>
+
+          <div class="info-block" aria-labelledby="main-title">
+            <p class="subtitle">
+              Entre agora no meu <strong>canal</strong> pra você<br />
+              receber conteúdos exclusivos todos os dias.
+            </p>
+
+            <div class="cta-wrap">
+              <a
+                class="cta"
+                href="https://whatsapp.com/channel/0029VbDsbZF6mYPQKcnDwp0u"
+                data-href="https://whatsapp.com/channel/0029VbDsbZF6mYPQKcnDwp0u"
+                target="_self"
+                rel="noopener noreferrer"
+                aria-label="Entrar no canal"
+              >
+                <svg class="whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                <span>ENTRAR NO CANAL</span>
+                <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+              </a>
+
+              <p class="legal-note">
+                Ao clicar no botão você concorda com nossos
+                <a href="https://lp-comunidade-one.vercel.app/termos-de-uso.html">Termos</a>
+                e
+                <a href="https://lp-comunidade-one.vercel.app/politica-de-privacidade.html">Políticas</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <nav aria-label="Links legais">
+          <a href="https://lp-comunidade-one.vercel.app/termos-de-uso.html">Termos de Uso</a>
+          <span aria-hidden="true">|</span>
+          <a href="https://lp-comunidade-one.vercel.app/politica-de-privacidade.html">Política de Privacidade</a>
+        </nav>
+      </footer>
+    </div>
+
+    <script>
+      (() => {
+        const title = document.querySelector(".hero-title");
+        const lines = [...title.querySelectorAll(".title-line")];
+        let index = 0;
+
+        for (const line of lines) {
+          const characters = [...line.textContent];
+          line.textContent = "";
+
+          for (const character of characters) {
+            const letter = document.createElement("span");
+            letter.className = "title-letter";
+            letter.style.setProperty("--letter-index", index);
+            letter.textContent = character === " " ? " " : character;
+            line.appendChild(letter);
+            index += 1;
+          }
+        }
+
+        const eyebrow = document.querySelector(".eyebrow");
+        const infoBlock = document.querySelector(".info-block");
+
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+        if (reduceMotion) {
+          eyebrow.classList.add("eyebrow-visible");
+          infoBlock.classList.add("info-visible");
+          return;
+        }
+
+        const letterCount = index;
+        const letterStagger = 30;
+        const letterDuration = 400;
+        const titleRevealSpan = (letterCount - 1) * letterStagger + letterDuration;
+        const ballReachesTitleDelay = 900;
+
+        document.body.classList.add("scene-start");
+
+        window.setTimeout(() => {
+          title.classList.add("title-visible");
+
+          window.setTimeout(() => {
+            eyebrow.classList.add("eyebrow-visible");
+
+            window.setTimeout(() => {
+              infoBlock.classList.add("info-visible");
+            }, 100);
+          }, titleRevealSpan);
+        }, ballReachesTitleDelay);
+      })();
+    </script>
+
+    <script>
+      (function () {
+        var TRACK_HOST = 'track.grupojc.cc';
+        var UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','campaign','fbclid','gclid','cid','account_id','bot'];
+
+        function mergeTrackingParams(href) {
+          var params = new URLSearchParams(window.location.search);
+          var url = new URL(href);
+          UTM_KEYS.forEach(function (k) {
+            var v = params.get(k);
+            if (v) url.searchParams.set(k, v);
+          });
+          if (url.hostname === TRACK_HOST) {
+            var fbp = document.cookie.match(/(?:^|; )_fbp=([^;]+)/);
+            var fbc = document.cookie.match(/(?:^|; )_fbc=([^;]+)/);
+            if (fbp) url.searchParams.set('fbp', decodeURIComponent(fbp[1]));
+            if (fbc) {
+              url.searchParams.set('fbc', decodeURIComponent(fbc[1]));
+            } else if (params.get('fbclid')) {
+              url.searchParams.set('fbc', 'fb.1.' + Date.now() + '.' + params.get('fbclid'));
+            }
+          }
+          return url;
+        }
+
+        function handleCtaClick(e) {
+          try {
+            var anchor = e.currentTarget;
+            var baseHref = anchor.getAttribute('data-href') || anchor.href;
+            var url = mergeTrackingParams(baseHref);
+            try {
+              if (typeof window.dispararLead === 'function') {
+                var eid = window.dispararLead();
+                if (eid && url.hostname === TRACK_HOST) url.searchParams.set('eid', eid);
+              }
+            } catch (err) { /* ignore */ }
+            anchor.href = url.toString();
+          } catch (err) { /* ignore */ }
+        }
+
+        document.querySelectorAll('.cta').forEach(function (a) {
+          a.addEventListener('click', handleCtaClick);
+        });
+      })();
+    </script>
+  </body>
+</html>
