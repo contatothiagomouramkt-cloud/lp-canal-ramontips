@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Política de Privacidade</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap"
+    />
+
+    <style>
+      :root {
+        --bg: #000000;
+        --bg-card: #000000;
+        --cyan: #a3e635;
+        --ink: #001A08;
+        --white: #ffffff;
+        --muted: #8ba0b8;
+        --font: "Barlow Condensed", system-ui, sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after { box-sizing: border-box; }
+
+      html, body { margin: 0; padding: 0; }
+
+      body {
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--bg);
+        color: var(--white);
+        font-family: "Anton", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .topbar {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        text-align: center;
+        background-color: var(--cyan);
+        color: var(--ink);
+        font-weight: 700;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .main {
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 1rem;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 28rem;
+        border-radius: 1rem;
+        background-color: var(--bg-card);
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        border: none;
+        box-shadow: none;
+      }
+
+      .card-icon {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 9999px;
+        background-color: var(--cyan);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 24px rgba(163, 230, 53, 0.55);
+      }
+
+      .card-icon svg {
+        width: 2rem;
+        height: 2rem;
+        color: var(--ink);
+      }
+
+      .card h1 {
+        margin: 0;
+        font-family: "Anton", sans-serif;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.01em;
+        line-height: 1.1;
+        text-align: center;
+        color: var(--white);
+        font-size: 1.75rem;
+      }
+
+      .card p {white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        margin: 0;
+        text-align: center;
+        font-size: clamp(0.75rem, 3.2svw, 0.95rem);
+        color: rgba(255, 255, 255, 0.85);
+        font-weight: 400;
+      }
+
+      /* ===== CTA (Variant 4: bounce-in + re-bounce loop + shine hover) ===== */
+      .cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        width: 100%;
+        padding: 1.1rem 0;
+        border-radius: 0.75rem;
+        background-color: var(--cyan);
+        color: var(--ink);
+        text-align: center;
+        text-decoration: none;
+        font-family: "Anton", sans-serif;
+        font-weight: 800;
+        font-size: 1.05rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(163, 230, 53, 0.3);
+        transition: transform 0.12s ease;
+        animation: bounce-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both,
+                   re-bounce 6s ease-in-out 4s infinite;
+      }
+
+      .cta::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.6) 50%,
+          transparent 100%
+        );
+        transform: skewX(-20deg);
+        transition: left 0.7s ease;
+      }
+
+      .cta:hover::after { left: 125%; }
+      .cta:active { transform: scale(0.97); }
+      .cta .arrow { transition: transform 0.2s ease; }
+      .cta:hover .arrow { transform: translateX(4px); }
+
+      @keyframes bounce-in {
+        0% { transform: scale(0.85); opacity: 0; }
+        60% { transform: scale(1.05); opacity: 1; }
+        100% { transform: scale(1); }
+      }
+
+      @keyframes re-bounce {
+        0%, 90%, 100% { transform: scale(1); }
+        95% { transform: scale(1.04); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .cta { animation: none; }
+        .cta::after { display: none; }
+      }
+
+      /* ===== Terms notice abaixo do CTA · micro (padrão das 4 milhão) ===== */
+      .card p.terms-notice {
+        margin: 0.4rem 0 0;
+        text-align: center;
+        font-size: 7px;
+        line-height: 1.35;
+        color: #ffffff;
+        font-weight: 400;
+        letter-spacing: 0;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        -webkit-text-size-adjust: none;
+        text-size-adjust: none;
+        -webkit-text-stroke: 0;
+      }
+      .card p.terms-notice a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+      .card p.terms-notice a:hover {
+        color: var(--cyan);
+        text-decoration: underline;
+        text-decoration-color: rgba(163, 230, 53, 0.4);
+        text-underline-offset: 2px;
+      }
+
+      .back {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s ease;
+      }
+
+      .back:hover { color: var(--white); }
+
+      /* ===== Rodapé (10svh compacto) ===== */
+      /* ===== Casa tag (BateuBet) ===== */
+      .casa-tag {
+        width: 100%;
+        padding: 0.5rem 1rem;
+        background: #4a0d1f;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .casa-mark {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        background: #ffffff;
+        color: #4a0d1f;
+        border-radius: 4px;
+        font-family: "Anton", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+      }
+      .casa-tag .publi { opacity: 0.65; font-weight: 500; }
+
+      /* ===== Rodapé selo strip (padrão LP) ===== */
+      .selo-footer {
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        height: 10svh;
+        min-height: 10svh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+      }
+      .selo-footer img {
+        max-height: 100%;
+        max-width: 100%;
+        width: auto;
+        height: auto;
+      }
+
+      .footer {
+        width: 100%;
+        height: 15svh;
+        min-height: 15svh;
+        flex: 0 0 15svh;
+        padding: 0.4rem 1rem;
+        text-align: center;
+        background-color: var(--cyan);
+        color: #000000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.15rem;
+        overflow: hidden;
+      }
+
+      .footer .rg {
+        color: #000000;
+        margin: 0;
+        font-weight: 700;
+        font-size: 0.88rem;
+        letter-spacing: 0.06em;
+        line-height: 1.1;
+      }
+
+      .footer .disclaimer {
+        margin: 0 auto;
+        max-width: 42rem;
+        font-size: 0.72rem;
+        line-height: 1.3;
+        color: rgba(0, 0, 0, 0.92);
+        font-weight: 500;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .footer .copy {
+        margin: 0;
+        font-size: 0.75rem;
+        color: rgba(0, 0, 0, 0.88);
+        font-weight: 500;
+        line-height: 1.1;
+      }
+
+      .footer .links {
+        margin: 0;
+        font-size: 0.75rem;
+        color: rgba(0, 0, 0, 0.9);
+        font-weight: 600;
+        line-height: 1.1;
+      }
+      .footer .links a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .footer .links a:hover {
+        text-decoration: underline;
+      }
+
+      @media (min-width: 768px) {
+        .card h1 { font-size: 2.125rem; }
+      }
+    </style>
+  </head>
+  <body>
+        <main class="main">
+      <div class="card">
+        <div class="card-icon" aria-hidden="true">
+          <!-- escudo (lucide shield) -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+          </svg>
+        </div>
+
+        <h1>Política de Privacidade</h1>
+
+        <p>Consulte a nossa Política de Privacidade no botão abaixo.</p>
+
+        <a class="cta" id="ler-politica" href="/politica-de-privacidade-completa.html">
+          LER POLÍTICA DE PRIVACIDADE <span class="arrow">→</span>
+        </a>
+
+        <a class="back" href="/">&larr; Voltar para a página inicial</a>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p class="rg">🔞 Jogue com Responsabilidade</p>
+      <p class="disclaimer">Este site não é do Facebook. Este site não faz parte do site do Facebook ou do Facebook Inc. Além disso, este site NÃO é endossado pelo Facebook de nenhuma maneira. FACEBOOK é uma marca comercial independente da FACEBOOK, Inc.</p>
+      <p class="copy">Todos os direitos reservados © 2026</p>
+      <p class="links"><a href="/termos-de-uso.html">Termos de Uso</a> | <a href="/politica-de-privacidade.html">Política de Privacidade</a></p>
+    </footer>
+  </body>
+</html>
